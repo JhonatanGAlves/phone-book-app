@@ -1,5 +1,9 @@
 import express from "express";
-import { makeCreateContactController } from "./src/factories/controllers/contact.js";
+
+import {
+  makeCreateContactController,
+  makeGetContactsController,
+} from "./src/factories/controllers/contact.js";
 
 const app = express();
 
@@ -8,6 +12,13 @@ app.use(express.json());
 app.post("/api/contacts", async (request, response) => {
   const createContactController = makeCreateContactController();
   const { statusCode, body } = await createContactController.execute(request);
+
+  return response.status(statusCode).send(body);
+});
+
+app.get("/api/contacts/all", async (request, response) => {
+  const getContactsController = makeGetContactsController();
+  const { statusCode, body } = await getContactsController.execute();
 
   return response.status(statusCode).send(body);
 });

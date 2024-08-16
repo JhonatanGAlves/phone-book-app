@@ -1,6 +1,15 @@
-import { CreateContactController } from "../../controllers/contact/index.js";
-import { PostgresCreateContactRepository } from "../../repositories/postgres/contact/index.js";
-import { CreateContactUseCase } from "../../use-cases/contact/index.js";
+import {
+  CreateContactController,
+  GetContactsController,
+} from "../../controllers/contact/index.js";
+import {
+  PostgresCreateContactRepository,
+  PostgresGetContactsRepository,
+} from "../../repositories/postgres/contact/index.js";
+import {
+  CreateContactUseCase,
+  GetContactsUseCase,
+} from "../../use-cases/contact/index.js";
 
 export const makeCreateContactController = () => {
   const createContactRepository = new PostgresCreateContactRepository();
@@ -12,4 +21,12 @@ export const makeCreateContactController = () => {
   );
 
   return createContactController;
+};
+
+export const makeGetContactsController = () => {
+  const getContactsRepository = new PostgresGetContactsRepository();
+  const getContactsUseCase = new GetContactsUseCase(getContactsRepository);
+  const getContactsController = new GetContactsController(getContactsUseCase);
+
+  return getContactsController;
 };
