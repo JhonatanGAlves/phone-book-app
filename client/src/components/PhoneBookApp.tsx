@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import { FaPlus, FaSearch } from "react-icons/fa";
 
@@ -8,9 +8,6 @@ import { useContactRequest } from "../hooks/useContactRequest";
 import { CustomModal } from "./CustomModal";
 
 export const PhoneBookApp = () => {
-  const [searchText, setSearchText] = useState<string>("");
-  const [isNewModalOpen, setIsNewModalOpen] = useState<boolean>(false);
-
   const {
     allContacts,
     handleCreateContact,
@@ -18,7 +15,23 @@ export const PhoneBookApp = () => {
     handleDeleteContact,
   } = useContactRequest();
 
+  const [searchText, setSearchText] = useState<string>("");
+  const [isNewModalOpen, setIsNewModalOpen] = useState<boolean>(false);
+  const [filteredContacts, setFilteredContacts] =
+    useState<ContactsTypes[]>(allContacts);
+
+  useEffect(() => {
+    setFilteredContacts(allContacts);
+  }, [allContacts]);
+
   const handleSearch = (text: string) => {
+    const newFilteredContacts = allContacts.filter(
+      (contact) =>
+        contact.firstName.toLowerCase().includes(text.toLowerCase()) ||
+        contact.lastName.toLowerCase().includes(text.toLowerCase()) ||
+        contact.phoneNumber.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredContacts(newFilteredContacts);
     setSearchText(text);
   };
 
@@ -50,7 +63,7 @@ export const PhoneBookApp = () => {
         />
       </div>
       <Contacts
-        allContacts={allContacts}
+        filteredContacts={filteredContacts}
         handleUpdateContact={handleUpdateContact}
         handleDeleteContact={handleDeleteContact}
       />
