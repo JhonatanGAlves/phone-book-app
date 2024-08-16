@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from "react";
 import { FaPlus, FaSearch } from "react-icons/fa";
 
 import { ActionButton } from "./ActionButton";
+import { Contacts } from "./contacts/Contacts";
 
 export const PhoneBookApp = () => {
   const [searchText, setSearchText] = useState<string>("");
@@ -18,7 +19,7 @@ export const PhoneBookApp = () => {
         <ActionButton
           icon={<FaPlus color="#f3f4f6" />}
           text="Add Contact"
-          style="font-bold"
+          style="font-bold text-gray-100"
         />
       </div>
       <div className="flex items-center gap-3 p-3 rounded border border-gray-400 text-[#212121] bg-white">
@@ -33,6 +34,7 @@ export const PhoneBookApp = () => {
           placeholder="Search for contact..."
         />
       </div>
+      <Contacts allContacts={[]} />
     </section>
   );
 };

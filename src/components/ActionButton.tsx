@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface ActionButtonProps {
   icon: ReactNode;
-  text: string;
+  text?: string;
   type?: "ADD" | "EDIT" | "REMOVE";
   style?: string;
 }
@@ -15,16 +15,17 @@ export const ActionButton = ({
 }: ActionButtonProps) => {
   return (
     <button
-      className={`flex items-center gap-1 py-4 ${!text ? "px-4" : "px-6"} ${
+      className={`flex justify-center items-center gap-1 ${
+        !text ? "w-9" : "w-fit px-4"
+      } h-9 ${
         type === "ADD"
           ? "border-[#347BF6] bg-[#347BF6]"
           : type === "REMOVE"
           ? "border-[#CB444A] bg-[#CB444A]"
-          : "border-gray-400 bg-transparent"
-      } border rounded text-base text-gray-100 hover:opacity-80 transition-all ${style}`}
+          : "border-gray-400 bg-white"
+      } border rounded text-base hover:opacity-80 transition-all ${style}`}
     >
       {icon}
-
       {text && <span>{text}</span>}
     </button>
   );
