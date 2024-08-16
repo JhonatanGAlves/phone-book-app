@@ -35,25 +35,24 @@ Make sure you have the following installed on your machine:
 
 ### Installation
 
-1. **Clone the repository**:
-   git clone https://github.com/JhonatanGAlves/phone-book-app.git
+1. **Clone the repository**:<br/>
+   git clone https://github.com/JhonatanGAlves/phone-book-app.git<br/>
    cd phone-book-app
-2. **Install dependencies:**:
+2. **Install dependencies:**:<br/>
    npm install
-3. **Setup the environment variables:**
-   Rename .env.example to .env and fill in the required environment variables:
-   Something like this:
-   POSTGRES_USER=root
-   POSTGRES_PASSWORD=password
-   POSTGRES_PORT=5432
-   POSTGRES_DB=phonebookapp
-   POSTGRES_HOST=localhost
-   PORT=8080
-4. **Run database migrations:**
+3. **Setup the environment variables:**<br/>
+   Rename .env.example to .env and fill in the required environment variables. Something like this:
+   - POSTGRES_USER=root
+   - POSTGRES_PASSWORD=password
+   - POSTGRES_PORT=5432
+   - POSTGRES_DB=phonebookapp
+   - POSTGRES_HOST=localhost
+   - PORT=8080
+4. **Run database migrations:**<br/>
    npx prisma migrate dev
-5. **Start the application:**
-   Backend: npm run start:dev
-   Frontend: npm run dev
+5. **Start the application:**<br/>
+   **Backend**: npm run start:dev<br/>
+   **Frontend**: npm run dev<br/>
 
 ## Usage
 
