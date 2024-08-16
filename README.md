@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# Phone Book App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Phone Book App is a full-stack application designed to manage and store contact information. This project is built with modern web technologies and follows best practices for a scalable and maintainable codebase.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Backend**:
 
-## Expanding the ESLint configuration
+  - Node.js
+  - Express
+  - Zod
+  - Validator
+  - UUID
+  - Prisma
+  - Pg
+  - PostgreSQL
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**:
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - React Icons
+  - React Input Mask
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+To get a local copy of the project up and running, follow these steps.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Prerequisites
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Make sure you have the following installed on your machine:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Git](https://git-scm.com/)
+
+### Installation
+
+1. **Clone the repository**:
+   git clone https://github.com/JhonatanGAlves/phone-book-app.git
+   cd phone-book-app
+2. **Install dependencies:**:
+   npm install
+3. **Setup the environment variables:**
+   Rename .env.example to .env and fill in the required environment variables:
+   Something like this:
+   POSTGRES_USER=root
+   POSTGRES_PASSWORD=password
+   POSTGRES_PORT=5432
+   POSTGRES_DB=phonebookapp
+   POSTGRES_HOST=localhost
+   PORT=8080
+4. **Run database migrations:**
+   npx prisma migrate dev
+5. **Start the application:**
+   Backend: npm run start:dev
+   Frontend: npm run dev
+
+## Usage
+
+Once the server is running, you can access the application at http://localhost:5173 (or the port you specified in the .env file).
+
+## License
+
+This project is licensed under the MIT License.
