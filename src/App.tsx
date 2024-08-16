@@ -1,10 +1,11 @@
-import { Header } from "./components/Header";
+import { Header, PhoneBookApp } from "./components/index";
 
 function App() {
   return (
-    <h1 className="flex flex-col p-8">
+    <div className="flex flex-col p-10 h-screen bg-[#F6F6F6]">
       <Header />
-    </h1>
+      <PhoneBookApp />
+    </div>
   );
 }
 
