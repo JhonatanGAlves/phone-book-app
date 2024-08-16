@@ -5,13 +5,22 @@ import { FaPlus, FaSearch } from "react-icons/fa";
 import { ActionButton } from "./ActionButton";
 import { Contacts } from "./contacts/Contacts";
 import { useContactRequest } from "../hooks/useContactRequest";
+import { CustomModal } from "./CustomModal";
 
 export const PhoneBookApp = () => {
   const [searchText, setSearchText] = useState<string>("");
-  const { allContacts } = useContactRequest();
+  const [isNewModalOpen, setIsNewModalOpen] = useState<boolean>(false);
+
+  const {
+    allContacts,
+  } = useContactRequest();
 
   const handleSearch = (text: string) => {
     setSearchText(text);
+  };
+
+  const handleAddModalOpen = () => {
+    setIsNewModalOpen(true);
   };
 
   return (
@@ -22,6 +31,7 @@ export const PhoneBookApp = () => {
           icon={<FaPlus color="#f3f4f6" />}
           text="Add Contact"
           style="font-bold text-gray-100"
+          onClick={handleAddModalOpen}
         />
       </div>
       <div className="flex items-center gap-3 p-3 rounded border border-gray-400 text-[#212121] bg-white">
@@ -36,7 +46,14 @@ export const PhoneBookApp = () => {
           placeholder="Search for contact..."
         />
       </div>
-      <Contacts allContacts={allContacts} />
+      <Contacts
+        allContacts={allContacts}
+      />
+      <CustomModal
+        title="Add New Contact"
+        isOpen={isNewModalOpen}
+        setIsOpen={setIsNewModalOpen}
+      />
     </section>
   );
 };
