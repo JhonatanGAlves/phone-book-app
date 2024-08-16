@@ -13,14 +13,18 @@ export const Contacts = ({
 }: ContactsProps) => {
   return (
     <main className="flex flex-col border border-gray-400 border-b-transparent rounded">
-      {filteredContacts.map((contact) => (
-        <CardContact
-          key={contact.uuid}
-          contact={contact}
-          handleUpdateContact={handleUpdateContact}
-          handleDeleteContact={handleDeleteContact}
-        />
-      ))}
+      {!filteredContacts.length ? (
+        <span className="self-center mt-4">No data found</span>
+      ) : (
+        filteredContacts.map((contact) => (
+          <CardContact
+            key={contact.uuid}
+            contact={contact}
+            handleUpdateContact={handleUpdateContact}
+            handleDeleteContact={handleDeleteContact}
+          />
+        ))
+      )}
     </main>
   );
 };
