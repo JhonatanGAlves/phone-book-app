@@ -7,11 +7,13 @@ import { useState } from "react";
 interface CardContactProps {
   contact: ContactsTypes;
   handleUpdateContact: (value: ContactsTypes) => void;
+  handleDeleteContact: (value: string) => void;
 }
 
 export const CardContact = ({
   contact,
   handleUpdateContact,
+  handleDeleteContact,
 }: CardContactProps) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
 
@@ -37,6 +39,7 @@ export const CardContact = ({
         <ActionButton
           icon={<FaTrashAlt color="#f3f4f6" />}
           type="REMOVE"
+          onClick={() => handleDeleteContact(contact.uuid)}
         />
       </div>
       <CustomModal

@@ -41,3 +41,15 @@ export function updateContact(
     });
 }
 
+export function deleteContact(contactId: string): Promise<AllContactResponse> {
+  return fetch(`${URL}/delete/${contactId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((r) => r.json().then((data) => ({ status: r.status, body: data })))
+    .then((res) => {
+      return res.body;
+    });
+}

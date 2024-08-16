@@ -2,6 +2,7 @@ import { SetStateAction, useEffect, useState } from "react";
 
 import {
   createContact,
+  deleteContact,
   fetchAllContacts,
   updateContact,
 } from "../services/api";
@@ -11,6 +12,7 @@ interface UseContactRequestProps {
   setAllContacts: (value: SetStateAction<ContactsTypes[]>) => void;
   handleCreateContact: (value: ContactsTypes) => void;
   handleUpdateContact: (value: ContactsTypes) => void;
+  handleDeleteContact: (value: string) => void;
 }
 
 export const useContactRequest = (): UseContactRequestProps => {
@@ -70,6 +72,13 @@ export const useContactRequest = (): UseContactRequestProps => {
     );
   };
 
+  const handleDeleteContact = (contactId: string) => {
+    deleteContact(contactId).then((deletedContact: AllContactResponse) => {
+      setAllContacts((prevState) =>
+        prevState.filter((prev) => prev.uuid !== deletedContact.id)
+      );
+    });
+  };
 
   useEffect(() => {
     getAllContacts();
@@ -80,5 +89,6 @@ export const useContactRequest = (): UseContactRequestProps => {
     setAllContacts,
     handleCreateContact,
     handleUpdateContact,
+    handleDeleteContact,
   };
 };

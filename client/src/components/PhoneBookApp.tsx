@@ -15,6 +15,7 @@ export const PhoneBookApp = () => {
     allContacts,
     handleCreateContact,
     handleUpdateContact,
+    handleDeleteContact,
   } = useContactRequest();
 
   const handleSearch = (text: string) => {
@@ -51,6 +52,7 @@ export const PhoneBookApp = () => {
       <Contacts
         allContacts={allContacts}
         handleUpdateContact={handleUpdateContact}
+        handleDeleteContact={handleDeleteContact}
       />
       <CustomModal
         title="Add New Contact"
