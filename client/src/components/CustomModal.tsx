@@ -11,6 +11,7 @@ interface CustomModalProps {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   contact?: ContactsTypes;
+  handleCreateContact?: (value: ContactsTypes) => void;
 }
 
 export const CustomModal = ({
@@ -18,6 +19,7 @@ export const CustomModal = ({
   isOpen,
   setIsOpen,
   contact,
+  handleCreateContact,
 }: CustomModalProps) => {
   const [modalObj, setModalObj] = useState<ContactsTypes | undefined>(
     contact ? { ...contact } : undefined
@@ -30,6 +32,9 @@ export const CustomModal = ({
     setModalObj(undefined);
     setIsOpen(false);
 
+    if (handleCreateContact) {
+      handleCreateContact(modalObj);
+    }
   };
 
   return (

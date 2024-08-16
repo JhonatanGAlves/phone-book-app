@@ -13,6 +13,7 @@ export const PhoneBookApp = () => {
 
   const {
     allContacts,
+    handleCreateContact,
   } = useContactRequest();
 
   const handleSearch = (text: string) => {
@@ -53,6 +54,7 @@ export const PhoneBookApp = () => {
         title="Add New Contact"
         isOpen={isNewModalOpen}
         setIsOpen={setIsNewModalOpen}
+        handleCreateContact={handleCreateContact}
       />
     </section>
   );
