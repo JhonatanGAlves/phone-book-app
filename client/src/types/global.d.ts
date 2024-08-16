@@ -1,5 +1,6 @@
 interface ContactsTypes {
   uuid: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   phoneNumber: string;
 }

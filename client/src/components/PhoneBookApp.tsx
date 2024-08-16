@@ -4,9 +4,11 @@ import { FaPlus, FaSearch } from "react-icons/fa";
 
 import { ActionButton } from "./ActionButton";
 import { Contacts } from "./contacts/Contacts";
+import { useContactRequest } from "../hooks/useContactRequest";
 
 export const PhoneBookApp = () => {
   const [searchText, setSearchText] = useState<string>("");
+  const { allContacts } = useContactRequest();
 
   const handleSearch = (text: string) => {
     setSearchText(text);
@@ -34,7 +36,7 @@ export const PhoneBookApp = () => {
           placeholder="Search for contact..."
         />
       </div>
-      <Contacts allContacts={[]} />
+      <Contacts allContacts={allContacts} />
     </section>
   );
 };
