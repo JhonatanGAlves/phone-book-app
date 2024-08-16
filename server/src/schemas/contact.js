@@ -26,3 +26,7 @@ export const createContactSchema = z.object({
       message: "Phone number is required",
     }),
 });
+
+export const updateContactSchema = createContactSchema.partial().strict({
+  message: "Some provided field is not allowed.",
+});
