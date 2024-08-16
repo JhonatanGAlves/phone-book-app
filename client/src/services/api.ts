@@ -24,3 +24,20 @@ export function createContact(
     });
 }
 
+export function updateContact(
+  contact: AllContactResponse,
+  contactId: string
+): Promise<AllContactResponse> {
+  return fetch(`${URL}/update/${contactId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(contact),
+  })
+    .then((r) => r.json().then((data) => ({ status: r.status, body: data })))
+    .then((res) => {
+      return res.body;
+    });
+}
+

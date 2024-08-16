@@ -6,10 +6,12 @@ import { useState } from "react";
 
 interface CardContactProps {
   contact: ContactsTypes;
+  handleUpdateContact: (value: ContactsTypes) => void;
 }
 
 export const CardContact = ({
   contact,
+  handleUpdateContact,
 }: CardContactProps) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
 
@@ -42,6 +44,7 @@ export const CardContact = ({
         isOpen={isEditModalOpen}
         setIsOpen={setIsEditModalOpen}
         contact={contact}
+        handleUpdateContact={handleUpdateContact}
       />
     </div>
   );

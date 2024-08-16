@@ -3,12 +3,14 @@ import { SetStateAction, useEffect, useState } from "react";
 import {
   createContact,
   fetchAllContacts,
+  updateContact,
 } from "../services/api";
 
 interface UseContactRequestProps {
   allContacts: ContactsTypes[];
   setAllContacts: (value: SetStateAction<ContactsTypes[]>) => void;
   handleCreateContact: (value: ContactsTypes) => void;
+  handleUpdateContact: (value: ContactsTypes) => void;
 }
 
 export const useContactRequest = (): UseContactRequestProps => {
@@ -55,6 +57,20 @@ export const useContactRequest = (): UseContactRequestProps => {
     });
   };
 
+  const handleUpdateContact = (currentContact: ContactsTypes) => {
+    const changedContact = changeProps(currentContact) as AllContactResponse;
+    const { id, ...noId } = changedContact;
+    updateContact(noId, id as string).then(
+      (updatedContact: AllContactResponse) => {
+        setAllContacts((prevState) => [
+          ...prevState.filter((prev) => prev.uuid !== id),
+          changeProps(updatedContact) as ContactsTypes,
+        ]);
+      }
+    );
+  };
+
+
   useEffect(() => {
     getAllContacts();
   }, []);
@@ -63,5 +79,6 @@ export const useContactRequest = (): UseContactRequestProps => {
     allContacts,
     setAllContacts,
     handleCreateContact,
+    handleUpdateContact,
   };
 };
