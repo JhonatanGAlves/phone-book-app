@@ -1,15 +1,18 @@
 import {
   CreateContactController,
+  DeleteContactController,
   GetContactsController,
   UpdateContactController,
 } from "../../controllers/contact/index.js";
 import {
   PostgresCreateContactRepository,
+  PostgresDeleteContactRepository,
   PostgresGetContactsRepository,
   PostgresUpdateContactRepository,
 } from "../../repositories/postgres/contact/index.js";
 import {
   CreateContactUseCase,
+  DeleteContactUseCase,
   GetContactsUseCase,
   UpdateContactUseCase,
 } from "../../use-cases/contact/index.js";
@@ -44,4 +47,16 @@ export const makeUpdateContactController = () => {
   );
 
   return updateContactController;
+};
+
+export const makeDeleteContactController = () => {
+  const deleteContactRepository = new PostgresDeleteContactRepository();
+  const deleteContactUseCase = new DeleteContactUseCase(
+    deleteContactRepository
+  );
+  const deleteContactController = new DeleteContactController(
+    deleteContactUseCase
+  );
+
+  return deleteContactController;
 };

@@ -2,6 +2,7 @@ import express from "express";
 
 import {
   makeCreateContactController,
+  makeDeleteContactController,
   makeGetContactsController,
   makeUpdateContactController,
 } from "./src/factories/controllers/contact.js";
@@ -27,6 +28,13 @@ app.get("/api/contacts/all", async (request, response) => {
 app.patch("/api/contacts/update/:contactId", async (request, response) => {
   const updateContactController = makeUpdateContactController();
   const { statusCode, body } = await updateContactController.execute(request);
+
+  return response.status(statusCode).send(body);
+});
+
+app.delete("/api/contacts/delete/:contactId", async (request, response) => {
+  const deleteContactController = makeDeleteContactController();
+  const { statusCode, body } = await deleteContactController.execute(request);
 
   return response.status(statusCode).send(body);
 });
