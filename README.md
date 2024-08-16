@@ -19,6 +19,7 @@ Phone Book App is a full-stack application designed to manage and store contact 
   - React
   - TypeScript
   - Tailwind CSS
+  - Radix UI
   - React Icons
   - React Input Mask
 
