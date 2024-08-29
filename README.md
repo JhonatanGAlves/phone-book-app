@@ -9,17 +9,13 @@
       <img src="https://img.shields.io/badge/PROJECT-8047F8?style=for-the-badge&logo=react&logoColor=white" />
    </a>
    <a href="#technologist-technologies">
-      <img src="https://img.shields.io/badge/TECHNOLOGIES-8047F8?style=for-the-badge&logo=codacy&logoColor=white
-" />
+      <img src="https://img.shields.io/badge/TECHNOLOGIES-8047F8?style=for-the-badge&logo=codacy&logoColor=white" />
    </a>
    <a href="#clipboard-how-to-use">
       <img src="https://img.shields.io/badge/HOW_TO_USE-8047F8?style=for-the-badge&logo=visual-studio-code&logoColor=white" />
    </a>
    <a href="#speech_balloon-contact">
       <img src="https://img.shields.io/badge/CONTACT-8047F8?style=for-the-badge&logo=maildotru&logoColor=white" />
-   </a>
-   <a href="https://coffee-delivery-six-gray.vercel.app/">
-      <img src="https://img.shields.io/badge/SEE_THE_PROJECT-8047F8?style=for-the-badge&logo=vercel&logoColor=white" />
    </a>
 </div>
 <br>
@@ -49,7 +45,7 @@ Phone Book App is a full-stack application designed to manage and store contact 
   - React Icons
   - React Input Mask
 
-## :clipboard: Getting Started
+## :clipboard: How to Use
 
 To get a local copy of the project up and running, follow these steps.
 
@@ -101,7 +97,11 @@ MacOS (Using Homebrew):
    - PORT=8080
    - DATABASE_URL="postgresql://postgres:password@localhost:5432/phonebookapp"
 4. **Run database migrations:**<br/>
+
+```bash
    npx prisma migrate dev
+```
+
 5. **Start the application:**<br/>
    Backend:
 
@@ -109,7 +109,7 @@ MacOS (Using Homebrew):
    npm run start:dev
 ```
 
-Backend:
+Frontend:
 
 ```bash
    npm run dev
@@ -128,7 +128,7 @@ This project is licensed under the MIT License.
 <br>
 <div align="center">
    <a href="https://jhonatandev-alves-app.vercel.app/" target="_blank">
-      <img src="https://img.shields.io/badge/PORTFOLIO?style=for-the-badge&logo=codeium&logoColor=white">
+      <img src="https://img.shields.io/badge/PORTFOLIO-8047F8?style=for-the-badge&logo=codeium&logoColor=white">
    </a>
    <a href="https://www.linkedin.com/in/jhonatan-alves-11b28015b/" target="_blank">
       <img src="https://img.shields.io/badge/LINKEDIN-8047F8?style=for-the-badge&logo=linkedin&logoColor=white" />
